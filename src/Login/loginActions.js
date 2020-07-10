@@ -1,15 +1,21 @@
+import axios from "../commons/http";
+
 import { types } from "./types";
 
 export const login = (username, password) => async (dispatch) => {
-  const value = {
-    data: {
-      token: `asdasdasdasdasdasdasdasdasdasdasdasdasd`,
-    },
-  };
-  const response = await Promise.resolve(value);
+  try {
+    const requestBody = {
+      username: username,
+      password: password,
+    };
+    const response = await axios.post("/login", requestBody);
 
-  dispatch({
-    type: types.LOGIN,
-    payload: response.data,
-  });
+    dispatch({
+      type: types.LOGIN,
+      payload: response.data,
+    });
+  } catch (e) {
+    //TODO: handle error handling
+    console.log("Error Occured in Login");
+  }
 };
