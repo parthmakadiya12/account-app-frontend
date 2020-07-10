@@ -1,5 +1,6 @@
 import axios from "../commons/http";
 import { types } from "./types";
+import { history } from '../App';
 
 export const signup = (userdata) => async (dispatch) => {
   try {
@@ -17,6 +18,7 @@ export const signup = (userdata) => async (dispatch) => {
     dispatch({
       type: types.SIGNUP
     });
+    history.push("/login");
   } catch (e) {
     //TODO: handle error handling
     console.log("Error Occured in SIGNUP");

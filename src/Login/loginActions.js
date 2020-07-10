@@ -1,5 +1,6 @@
 import axios from "../commons/http";
 import { types } from "./types";
+import { history } from '../App';
 
 export const login = (username, password) => async (dispatch) => {
   try {
@@ -13,6 +14,7 @@ export const login = (username, password) => async (dispatch) => {
       type: types.LOGIN,
       payload: response.data,
     });
+    history.push("/dashboard");
   } catch (e) {
     //TODO: handle error handling
     console.log("Error Occured in Login");
