@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NotFound from "./helpers/NotFound";
 import Login from './Login/LoginContainer';
+import SignUp from './Signup/SignupContainer';
 import Dashboard from './Dashboard/Dashboard';
 import "./App.css";
 
@@ -11,6 +12,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route path='*' component={NotFound} />
       </Switch>

@@ -45,6 +45,9 @@ class Login extends React.Component {
           value={password}
         />
         <button onClick={this.performLogin}>Perform Login</button>
+        <button onClick={() => this.props.history.push("/signup")}>
+          Signup
+        </button>
       </div>
     );
   }
