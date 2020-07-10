@@ -15,8 +15,21 @@ class Login extends React.Component {
     });
   };
 
+  performLogin = async () => {
+    const { username, password } = this.state;
+    this.props.showSpinner();
+    await this.props.login(username, password);
+    this.props.hideSpinner();
+  };
+
   render() {
     const { username, password } = this.state;
+    const { spinner } = this.props;
+
+    if (spinner === true) {
+      return <div>Loading</div>;
+    }
+
     return (
       <div>
         Login Page Username:
@@ -31,9 +44,7 @@ class Login extends React.Component {
           onChange={(e) => this.handleInputChange(e, "password")}
           value={password}
         />
-        <button onClick={() => this.props.login(username, password)}>
-          Perform Login
-        </button>
+        <button onClick={this.performLogin}>Perform Login</button>
       </div>
     );
   }

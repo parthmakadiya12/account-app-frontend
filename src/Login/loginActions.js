@@ -1,5 +1,4 @@
 import axios from "../commons/http";
-
 import { types } from "./types";
 
 export const login = (username, password) => async (dispatch) => {
