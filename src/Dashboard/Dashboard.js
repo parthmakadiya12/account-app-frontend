@@ -1,5 +1,7 @@
 import React from "react";
-
+import { CreateInvoice } from "../helpers/CreateInvoice/CreateInvoice";
+import { ShowTotal } from "../helpers/ShowTotal/ShowTotal";
+import {InvoiceList} from "../helpers/InvoiceList/InvoiceList";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -19,9 +21,9 @@ class Dashboard extends React.Component {
   };
 
   createInvoice = async () => {
-    const { type, amount } = this.state;
+    const { type, amount, note } = this.state;
     this.props.showSpinner();
-    await this.props.createInvoice(type, amount);
+    await this.props.createInvoice(type, amount, note);
     this.props.hideSpinner();
   };
   render() {
@@ -32,45 +34,13 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-        <div>
-          <h2>Add Invoide</h2>
-          <label>Type of Invoice </label>
-          <br />
-          <input
-            type="radio"
-            onChange={(e) => this.handleChange(e, "type")}
-            id="debit"
-            name="gender"
-            value="debit"
-          />
-          <label for="debit">Debit</label>
-          <br />
-          <input
-            type="radio"
-            onChange={(e) => this.handleChange(e, "type")}
-            id="credit"
-            name="gender"
-            value="credit"
-          />
-          <label for="credit">Credit</label>
-          <br />
-          <label>Amount</label>
-          <br />
-          <input type="text" onChange={(e) => this.handleChange(e, "amount")} />
-          <br />
-          <button onClick={this.createInvoice}>Create Invoice</button>
-        </div>
-        {this.props.invoices &&
-          this.props.invoices.map((i) => {
-            return (
-              <>
-                <h3>{i.username}</h3>
-                <h3>{i.amount}</h3>
-                <h3>{i.type}</h3>
-                <hr />
-              </>
-            );
-          })}
+        <button onClick={this.props.logout}>Logout </button>
+        <CreateInvoice
+          createInvoice={this.createInvoice}
+          handleChange={this.handleChange}
+        />
+        <ShowTotal debit={220} credit={1122}/>
+        <InvoiceList invoices={this.props.invoices}/>
       </div>
     );
   }

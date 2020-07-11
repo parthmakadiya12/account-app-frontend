@@ -1,5 +1,6 @@
 import axios from "../commons/http";
 import { types } from "./types";
+import { history } from "../App";
 
 export const getInvoices = () => async (dispatch, getState) => {
   const token = getState().login.token;
@@ -20,9 +21,12 @@ export const getInvoices = () => async (dispatch, getState) => {
   }
 };
 
-export const createInvoice = (type, amount) => async (dispatch, getState) => {
+export const createInvoice = (type, amount, note) => async (
+  dispatch,
+  getState
+) => {
   const token = getState().login.token;
-  const data = { type:type, amount:amount };
+  const data = { type: type, amount: amount, note: note };
   try {
     const response = await axios.post("/invoices/add", data, {
       headers: {
@@ -38,4 +42,11 @@ export const createInvoice = (type, amount) => async (dispatch, getState) => {
     //TODO: handle error handling
     console.log("Error Occured in Get Invoice");
   }
+};
+
+export const logout = () => {
+  history.push("/");
+  return {
+    type: "USER_LOGOUT",
+  };
 };
