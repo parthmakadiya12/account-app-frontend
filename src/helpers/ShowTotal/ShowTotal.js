@@ -1,30 +1,44 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 
-export function ShowTotal({ debit, credit }) {
+export function ShowTotal({ debit, credit, logout }) {
   const classes = useStyles();
   return (
     <div className={`${classes.bottomContainer} ${classes.row}`}>
+      <Button variant="contained" onClick={logout} color="red" className={classes.button}>
+        Logout
+      </Button>
+      <div className={classes.row}>
       <Typography className={`${classes.center} ${classes.row}`} variant="h5">
         Total:
       </Typography>
       <div className={classes.valueContainer}>
-      <Typography className={`${classes.center} ${classes.row}`} variant="body1">
-        <b>Credit : </b> {credit}
-      </Typography>
-      <Typography className={`${classes.center} ${classes.row}`} variant="body1">
-        <b>Debit : </b> {debit}
-      </Typography>
+        <Typography
+          className={`${classes.center} ${classes.row}`}
+          variant="body1"
+        >
+          <b>Credit : </b> {credit}
+        </Typography>
+        <Typography
+          className={`${classes.center} ${classes.row}`}
+          variant="body1"
+        >
+          <b>Debit : </b> {debit}
+        </Typography>
+      </div>
       </div>
     </div>
   );
 }
 
 const useStyles = makeStyles({
-  valueContainer:{
-    margin:"auto 20px"
-
+  button:{
+    backgroundColor:"#ffb9b9",
+    borderRadius: 0
+  },
+  valueContainer: {
+    margin: "auto 20px",
   },
   row: {
     display: "flex",
@@ -39,8 +53,8 @@ const useStyles = makeStyles({
     bottom: "0",
     height: "60px",
     width: "100%",
-    justifyContent:"flex-end",
-    backgroundColor:"#3f51b5",
-    color:"white"
+    justifyContent: "space-between",
+    backgroundColor: "#3f51b5",
+    color: "white",
   },
 });

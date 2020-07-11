@@ -39,9 +39,6 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-        <Button variant="contained" onClick={this.props.logout} color="primary">
-          Logout
-        </Button>
         <CreateInvoice
           createInvoice={this.createInvoice}
           handleChange={this.handleChange}
@@ -52,7 +49,7 @@ class Dashboard extends React.Component {
             <InvoiceList invoices={this.props.invoices} />
           </Grid>
         </Grid>
-        <ShowTotal debit={debit} credit={credit} />
+        <ShowTotal logout={this.props.logout} debit={debit} credit={credit} />
       </div>
     );
   }
