@@ -1,7 +1,9 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
+
 import { CreateInvoice } from "../helpers/CreateInvoice/CreateInvoice";
 import { ShowTotal } from "../helpers/ShowTotal/ShowTotal";
-import {InvoiceList} from "../helpers/InvoiceList/InvoiceList";
+import { InvoiceList } from "../helpers/InvoiceList/InvoiceList";
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -34,13 +36,15 @@ class Dashboard extends React.Component {
     }
     return (
       <div>
-        <button onClick={this.props.logout}>Logout </button>
+        <Button variant="contained" onClick={this.props.logout} color="primary">
+          Logout
+        </Button>
         <CreateInvoice
           createInvoice={this.createInvoice}
           handleChange={this.handleChange}
         />
-        <ShowTotal debit={220} credit={1122}/>
-        <InvoiceList invoices={this.props.invoices}/>
+        <ShowTotal debit={220} credit={1122} />
+        <InvoiceList invoices={this.props.invoices} />
       </div>
     );
   }

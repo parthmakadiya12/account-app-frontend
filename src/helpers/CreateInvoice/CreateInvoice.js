@@ -13,7 +13,7 @@ export function CreateInvoice({ handleChange, createInvoice }) {
         name="gender"
         value="debit"
       />
-      <label for="debit">Debit</label>
+      <label htmlFor="debit">Debit</label>
       <br />
       <input
         type="radio"
@@ -22,7 +22,7 @@ export function CreateInvoice({ handleChange, createInvoice }) {
         name="gender"
         value="credit"
       />
-      <label for="credit">Credit</label>
+      <label htmlFor="credit">Credit</label>
       <br />
       <label>Amount</label>
       <br />
