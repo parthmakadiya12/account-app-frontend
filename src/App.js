@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import NotFound from "./helpers/NotFound";
 import Login from './Login/LoginContainer';
 import SignUp from './Signup/SignupContainer';
-import Dashboard from './Dashboard/Dashboard';
+import Dashboard from './Dashboard/DashboardContainer';
 import "./App.css";
 
 export const history = createBrowserHistory()
