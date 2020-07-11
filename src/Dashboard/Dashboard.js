@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import { Typography } from "@material-ui/core";
 
 import { CreateInvoice } from "../helpers/CreateInvoice/CreateInvoice";
 import { ShowTotal } from "../helpers/ShowTotal/ShowTotal";
@@ -13,6 +15,7 @@ class Dashboard extends React.Component {
   async componentDidMount() {
     this.props.showSpinner();
     await this.props.getInvoices();
+    await this.props.countTotal();
     this.props.hideSpinner();
   }
 
@@ -29,7 +32,7 @@ class Dashboard extends React.Component {
     this.props.hideSpinner();
   };
   render() {
-    const { spinner } = this.props;
+    const { spinner,debit,credit } = this.props;
 
     if (spinner === true) {
       return <div>Loading</div>;
@@ -43,8 +46,13 @@ class Dashboard extends React.Component {
           createInvoice={this.createInvoice}
           handleChange={this.handleChange}
         />
-        <ShowTotal debit={220} credit={1122} />
-        <InvoiceList invoices={this.props.invoices} />
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid xs={10} md={8}  spacing={3}>
+            <Typography variant="h4" gutterBottom> Invoice List </Typography>
+            <InvoiceList invoices={this.props.invoices} />
+          </Grid>
+        </Grid>
+        <ShowTotal debit={debit} credit={credit} />
       </div>
     );
   }

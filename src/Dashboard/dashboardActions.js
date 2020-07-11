@@ -40,7 +40,25 @@ export const createInvoice = (type, amount, note) => async (
     });
   } catch (e) {
     //TODO: handle error handling
-    console.log("Error Occured in Get Invoice");
+    console.log("Error Occured in Get Invoice",e);
+  }
+};
+
+export const countTotal = () => async (dispatch, getState) => {
+  const token = getState().login.token;
+  try {
+    const response = await axios.get("/invoices/total/count", {
+      headers: {
+        authorization: token,
+      },
+    });
+    dispatch({
+      type: types.COUNT_TOTAL,
+      payload: response.data,
+    });
+  } catch (e) {
+    //TODO: handle error handling
+    console.log("Error Occured in count total",e);
   }
 };
 

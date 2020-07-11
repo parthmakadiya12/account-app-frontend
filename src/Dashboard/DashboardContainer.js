@@ -13,7 +13,9 @@ const mapStateToProps = (state) => {
   return {
     error: dashboard.error,
     invoices: dashboard.invoices,
-    spinner:spinner.showSpinner
+    spinner:spinner.showSpinner,
+    debit:dashboard.debit,
+    credit:dashboard.credit
   };
 };
 

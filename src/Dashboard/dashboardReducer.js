@@ -10,6 +10,11 @@ const dashboardReducer = function (state = initialState, action) {
         ...state,
         invoices: action.payload
       };
+    case types.COUNT_TOTAL:
+      return{
+        ...state,
+        ...action.payload
+      }
     default:
       return state;
   }
