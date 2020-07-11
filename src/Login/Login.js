@@ -80,8 +80,7 @@ class Login extends React.Component {
             >
               Sign In
             </Button>
-            <Grid container>
-
+            <Grid container justify="flex-end">
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}

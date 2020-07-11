@@ -18,9 +18,9 @@ export const signup = (userdata) => async (dispatch) => {
     dispatch({
       type: types.SIGNUP
     });
-    history.push("/login");
+    history.push("/");
   } catch (e) {
     //TODO: handle error handling
-    console.log("Error Occured in SIGNUP");
+    console.log("Error Occured in SIGNUP",e);
   }
 };

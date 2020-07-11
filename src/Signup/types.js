@@ -1,3 +1,3 @@
 export const types={
-    "LOGIN":"LOGIN"
+    "SIGNUP":"SIGNUP"
 }

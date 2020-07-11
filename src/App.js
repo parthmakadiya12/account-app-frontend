@@ -1,14 +1,14 @@
 import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import {createBrowserHistory} from 'history'
+import { createBrowserHistory as createHistory } from "history";
 
 import NotFound from "./helpers/NotFound";
-import Login from './Login/LoginContainer';
-import SignUp from './Signup/SignupContainer';
-import Dashboard from './Dashboard/DashboardContainer';
+import Login from "./Login/LoginContainer";
+import SignUp from "./Signup/SignupContainer";
+import Dashboard from "./Dashboard/DashboardContainer";
 import "./App.css";
 
-export const history = createBrowserHistory()
+export const history = createHistory();
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route path='*' component={NotFound} />
+        <Route path="*" component={NotFound} />
       </Switch>
     </Router>
   );
