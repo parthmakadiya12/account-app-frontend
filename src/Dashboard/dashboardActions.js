@@ -28,7 +28,7 @@ export const createInvoice = (type, amount, note) => async (
   const token = getState().login.token;
   const data = { type: type, amount: amount, note: note };
   try {
-    const response = await axios.post("/invoices/add", data, {
+    await axios.post("/invoices/add", data, {
       headers: {
         authorization: token,
       },
@@ -36,11 +36,11 @@ export const createInvoice = (type, amount, note) => async (
     dispatch(getInvoices());
     dispatch({
       type: types.CREATE_INVOICE,
-      payload: response.data.status,
+      payload: data,
     });
   } catch (e) {
     //TODO: handle error handling
-    console.log("Error Occured in Get Invoice",e);
+    console.log("Error Occured in Get Invoice", e);
   }
 };
 
@@ -58,7 +58,7 @@ export const countTotal = () => async (dispatch, getState) => {
     });
   } catch (e) {
     //TODO: handle error handling
-    console.log("Error Occured in count total",e);
+    console.log("Error Occured in count total", e);
   }
 };
 

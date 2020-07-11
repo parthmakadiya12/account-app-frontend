@@ -6,7 +6,7 @@ export function ShowTotal({ debit, credit, logout }) {
   const classes = useStyles();
   return (
     <div className={`${classes.bottomContainer} ${classes.row}`}>
-      <Button variant="contained" onClick={logout} color="red" className={classes.button}>
+      <Button variant="contained" onClick={logout} className={classes.button}>
         Logout
       </Button>
       <div className={classes.row}>
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   bottomContainer: {
-    position: "absolute",
+    position: "fixed",
     bottom: "0",
     height: "60px",
     width: "100%",

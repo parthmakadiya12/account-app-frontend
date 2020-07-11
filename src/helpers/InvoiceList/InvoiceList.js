@@ -10,33 +10,30 @@ import Paper from "@material-ui/core/Paper";
 
 export function InvoiceList({ invoices }) {
   const classes = useStyles();
-  console.log(invoices)
-  if(!!!invoices){
-    return(<></>)
-  }
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>type</TableCell>
-              <TableCell>Note</TableCell>
-              <TableCell align="right">Amount</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {invoices &&
-              invoices.map((row) => (
-                <TableRow key={row.name}>
+      {
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>type</TableCell>
+                <TableCell>Note</TableCell>
+                <TableCell align="right">Amount</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {invoices.map((row, index) => (
+                <TableRow key={row.name + "_" + index}>
                   <TableCell>{row.type}</TableCell>
                   <TableCell>{row.note}</TableCell>
                   <TableCell align="right">{row.amount}</TableCell>
                 </TableRow>
               ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      }
     </>
   );
 }

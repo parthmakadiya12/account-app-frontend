@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 
 import { CreateInvoice } from "../helpers/CreateInvoice/CreateInvoice";
 import { ShowTotal } from "../helpers/ShowTotal/ShowTotal";
@@ -32,21 +32,50 @@ class Dashboard extends React.Component {
     this.props.hideSpinner();
   };
   render() {
-    const { spinner,debit,credit } = this.props;
-
+    const { spinner, debit, credit, type, classes } = this.props;
+    //invoiceHolder
     if (spinner === true) {
       return <div>Loading</div>;
     }
     return (
       <div>
-        <CreateInvoice
-          createInvoice={this.createInvoice}
-          handleChange={this.handleChange}
-        />
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Grid xs={10} md={8}  spacing={3}>
-            <Typography variant="h4" gutterBottom> Invoice List </Typography>
-            <InvoiceList invoices={this.props.invoices} />
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.addInvoiceHolder}
+        >
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid item xs={10} md={8}>
+              <Typography variant="h4" gutterBottom>
+                Add Invoice
+              </Typography>
+              <CreateInvoice
+                createInvoice={this.createInvoice}
+                handleChange={this.handleChange}
+                type={type}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.invoiceHolder}
+        >
+          <Grid item xs={10} md={8}>
+            {typeof this.props.invoices !== "undefined" &&
+              this.props.invoices.length > 0 && (
+                <>
+                  <Typography variant="h4" gutterBottom>
+                    Invoice List
+                  </Typography>
+                  <InvoiceList invoices={this.props.invoices} />
+                </>
+              )}
           </Grid>
         </Grid>
         <ShowTotal logout={this.props.logout} debit={debit} credit={credit} />
@@ -55,4 +84,14 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+const styles = (theme) => ({
+  invoiceHolder: {
+    marginTop: "30px",
+    marginBottom: "100px",
+  },
+  addInvoiceHolder: {
+    marginTop: "30px",
+  },
+});
+
+export default withStyles(styles, { withTheme: true })(Dashboard);
