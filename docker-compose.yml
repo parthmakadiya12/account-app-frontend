@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  account-app-frontend:
+    container_name: account-app-frontend
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - '1337:80'
+    environment:
+      - "REACT_APP_API_SERVER=http://dockerhost:8080"
+    extra_hosts:
+      - "dockerhost:$DOCKERHOST"

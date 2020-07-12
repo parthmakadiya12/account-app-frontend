@@ -19,8 +19,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "dev": "chmod +x ./env.sh && ./env.sh && cp env-config.js ./public/ && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "move": "rm -r -f ../accounting-app-backend/build && mv build ../accounting-app-backend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
