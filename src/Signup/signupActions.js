@@ -13,7 +13,7 @@ export const signup = (userdata) => async (dispatch) => {
       username: userdata.username,
       password: userdata.password,
     };
-    await axios.post("/signup", requestBody);
+    await axios.post("/auth/signup", requestBody);
 
     dispatch({
       type: types.SIGNUP

@@ -8,7 +8,7 @@ export const login = (username, password) => async (dispatch) => {
       username: username,
       password: password,
     };
-    const response = await axios.post("/login", requestBody);
+    const response = await axios.post("/auth/login", requestBody);
 
     dispatch({
       type: types.LOGIN,
