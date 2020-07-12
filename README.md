@@ -34,7 +34,8 @@
 - After a build run `npm run move` or You can manually copy paste the build folder inside backend project.
 - That's it. Now go to the backend Project.
 
-#### Run with docker/docker-compose
+#### Run with docker/docker-compose (Only Frontend)
+- If you specifically want to run frontend project then only run this. If you just want to see the app running with backend then run our backend project. It also includes the frontend so that you don't need to run 2 projects. ( go here and just run one command to run entire thing. [https://github.com/parthmakadiya12/account-app-test-backend](https://github.com/parthmakadiya12/account-app-test-backend) )
 - clone the project
 - run `./docker-run.sh`
 - It will take few minutes
